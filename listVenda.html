@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <title>Lista de Vendas</title>
+</head>
+<body>
+<div th:replace="fragments :: menu"></div>
+<div class="container mt-5">
+    <h3 class="text-center">Lista de Vendas</h3>
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="venda : ${list}">
+            <td th:text="${venda.id}"></td>
+            <td th:text="${venda.descricao}"></td>
+            <td>
+                <a th:href="@{/venda/edit(id=${venda.id})}" class="btn btn-warning btn-sm">
+                    Editar
+                </a>
+                <a th:href="@{/venda/delete(id=${venda.id})}" class="btn btn-danger btn-sm">
+                    Apagar
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a th:href="@{/venda/register}" class="btn btn-primary">Cadastrar Nova Venda</a>
+    </div>
+</div>
+</body>
+</html>
