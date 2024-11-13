@@ -3,10 +3,12 @@ import com.fafram.produtos_crud.model.VendaProduto;
 import com.fafram.produtos_crud.repository.VendaProdutoRepository;
 import com.fafram.produtos_crud.utils.VendaDoProdutoNaoEncontrada;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ServiceVendaProduto implements InterfaceVendaProduto{
 
     @Autowired
