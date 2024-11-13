@@ -8,4 +8,6 @@ public interface InterfaceServiceProduto {
     public List<Produto> verTodosProdutos();
     public void atualizarProdutos(Produto product);
     public void deletarProdutos(Long id);
+    public void adicionarEstoque(Long id, int quantidadeAdicionada);
+    public void removerDoEstoque(Long id, int quantidadeRemovida) throws IllegalAccessException;
 }

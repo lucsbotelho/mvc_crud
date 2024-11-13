@@ -45,4 +45,34 @@ public class ServiceProduto implements InterfaceServiceProduto{
         produto.delete(procurarPorId(id));
     }
 
+    @Override
+    public void adicionarEstoque(Long id, int quantidadeAdicionada) {
+        Optional<Produto> produtoEstoque = produto.findById(id);
+        if(produtoEstoque.isPresent()){
+            Produto produtoAdicionado = produtoEstoque.get();
+            produtoAdicionado.setQuantidadeEstoque(produtoAdicionado.getQuantidadeEstoque() + quantidadeAdicionada);
+            produto.save(produtoAdicionado);
+        }
+        else{
+            throw new ProdutoNaoEncontradoException("Produto" + id + "não encontrado");
+        }
+    }
+
+    public void removerDoEstoque(Long id, int quantidadeRetirada) throws IllegalAccessException {
+        Optional<Produto> produtoEstoque = produto.findById(id);
+        if(produtoEstoque.isPresent()){
+            Produto produtoRemovido = produtoEstoque.get();
+            if(produtoRemovido.getQuantidadeEstoque() >= quantidadeRetirada){
+                produtoRemovido.setQuantidadeEstoque(produtoRemovido.getQuantidadeEstoque() - quantidadeRetirada);
+                produto.save(produtoRemovido);
+            }
+            else{
+                throw new IllegalAccessException("Estoque insuficiente para remover" + quantidadeRetirada + "unidades.");
+            }
+        }
+        else{
+            throw new ProdutoNaoEncontradoException("Produto" + id + "não encontrado");
+        }
+
+    }
 }

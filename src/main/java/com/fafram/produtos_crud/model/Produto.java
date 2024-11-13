@@ -14,6 +14,11 @@ public class Produto {
 
     private String descricao;
     private double preco;
-    private int quantidade_estoque;
-    private Long id_categosria;
+    private int quantidadeEstoque;
+
+
+    // Criando a relação produto-categoria usando muitos-para-um
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
 }

@@ -8,8 +8,9 @@ import lombok.*;
 @AllArgsConstructor
 
 public class Categoria {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_categoria;
+    private Long id_categoria;
     private String descricao;
 }

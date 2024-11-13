@@ -10,6 +10,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 
+
+// lista dos produtos que estão sendo vendidos
 public class VendaProduto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
